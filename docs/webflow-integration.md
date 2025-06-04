@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 **In Project Settings > Custom Code > Footer Code:**
 ```html
 <!-- Cookie Consent Library -->
-<script src="https://cdn.jsdelivr.net/gh/YOUR-USERNAME/YOUR-REPO-NAME@latest/dist/cookieConsent.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cntrlx/cookiejs@latest/dist/cookieConsent.min.js"></script>
 ```
 
 **⚠️ Important**: Replace `YOUR-USERNAME/YOUR-REPO-NAME` with your actual GitHub details.
