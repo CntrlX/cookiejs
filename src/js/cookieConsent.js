@@ -42,7 +42,7 @@
         },
         
         // UI customization
-        showIcon: true,
+        showIcon: false,
         showPreferencesOnFirst: false,
         animation: 'slide',
         
@@ -77,7 +77,7 @@
         // Text content
         content: {
             header: 'We Rely on Cookies',
-            message: 'At GreenAds Global, we use cookies and similar tools to understand how you use our website. This helps us improve your experience, personalize our services, and fine-tune our marketing efforts. By clicking "Accept," you agree to our use of cookies as outlined in our Privacy Statement. You can read more information about our Cookie Policy.',
+            message: 'At GreenAds Global, We Rely on Cookies and similar tools to understand how you use our website. This helps us improve your experience, personalize our services, and fine-tune our marketing efforts. By clicking "Accept," you agree to our use of cookies as outlined in our Privacy Statement. You can read more information about our',
             acceptButton: 'Accept',
             declineButton: 'Reject all',
             settingsButton: 'Cookie Settings',
@@ -102,7 +102,7 @@
     const translations = {
         en: {
             header: 'We Rely on Cookies',
-            message: 'At GreenAds Global, we use cookies and similar tools to understand how you use our website. This helps us improve your experience, personalize our services, and fine-tune our marketing efforts. By clicking "Accept," you agree to our use of cookies as outlined in our Privacy Statement.',
+            message: 'At GreenAds Global, We Rely on Cookies and similar tools to understand how you use our website. This helps us improve your experience, personalize our services, and fine-tune our marketing efforts. By clicking "Accept," you agree to our use of cookies as outlined in our Privacy Statement. You can read more information about our',
             acceptButton: 'Accept',
             declineButton: 'Reject all',
             settingsButton: 'Cookie Settings',
@@ -356,16 +356,15 @@
                             ${this.config.showIcon ? '<div class="cc-icon">🍪</div>' : ''}
                             <h3 class="cc-title">${content.header}</h3>
                         </div>
-                        <p class="cc-message">${content.message}</p>
-                        <div class="cc-links">
-                            <a href="${this.config.privacyPolicyUrl}" target="_blank" class="cc-link">${content.privacyPolicy}</a>
-                            <a href="${this.config.cookiePolicyUrl}" target="_blank" class="cc-link">${content.cookiePolicy}</a>
+                        <div class="cc-message-container">
+                            <p class="cc-message">
+                                ${content.message} <a href="${this.config.cookiePolicyUrl}" target="_blank" class="cc-link">${content.cookiePolicy}.</a>
+                            </p>
                         </div>
                     </div>
                     <div class="cc-actions">
-                        ${this.config.showDeclineButton ? `<button class="cc-btn cc-btn-decline" data-action="decline">${content.declineButton}</button>` : ''}
-                        <button class="cc-btn cc-btn-settings" data-action="settings">${content.settingsButton}</button>
                         <button class="cc-btn cc-btn-accept" data-action="accept">${content.acceptButton}</button>
+                        ${this.config.showDeclineButton ? `<button class="cc-btn cc-btn-decline" data-action="decline">${content.declineButton}</button>` : ''}
                     </div>
                 </div>
             `;

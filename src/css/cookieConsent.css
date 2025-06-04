@@ -108,18 +108,15 @@
 .cc-container {
     display: flex;
     flex-direction: column;
-    gap: var(--cc-gap);
+    gap: 1.5rem;
     padding: var(--cc-padding);
     max-width: 1200px;
     margin: 0 auto;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .cc-container {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 2rem;
+        gap: 1rem;
     }
 }
 
@@ -127,6 +124,13 @@
 .cc-content {
     flex: 1;
     min-width: 0;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .cc-content {
+        max-width: 100%;
+    }
 }
 
 .cc-header {
@@ -142,56 +146,55 @@
 }
 
 .cc-title {
-    font-size: var(--cc-font-size-xl);
-    font-weight: 600;
+    font-size: 1.375rem;
+    font-weight: 700;
     color: var(--cc-text-primary);
     margin: 0;
     letter-spacing: -0.025em;
+    line-height: 1.2;
 }
 
 .cc-message {
     color: var(--cc-text-secondary);
-    margin: 0.75rem 0 1rem 0;
+    margin: 0.5rem 0 0 0;
     font-size: var(--cc-font-size-base);
-    line-height: 1.6;
-    max-width: 80ch;
+    line-height: 1.5;
+    max-width: none;
 }
 
 .cc-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 0.75rem;
+    display: inline;
+    margin: 0;
 }
 
 .cc-link {
     color: var(--cc-primary-color);
     text-decoration: underline;
-    font-size: var(--cc-font-size-sm);
+    font-size: var(--cc-font-size-base);
     transition: color var(--cc-duration-fast) ease;
     font-weight: 500;
 }
 
 .cc-link:hover {
     color: var(--cc-primary-hover);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* Banner actions */
 .cc-actions {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 0.75rem;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: flex-start;
     flex-shrink: 0;
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .cc-actions {
         justify-content: stretch;
-        margin-top: 1rem;
+        width: 100%;
     }
     
     .cc-actions .cc-btn {
@@ -205,10 +208,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid transparent;
+    padding: 0.75rem 2rem;
+    border: 2px solid transparent;
     border-radius: var(--cc-border-radius);
-    font-size: var(--cc-font-size-sm);
+    font-size: var(--cc-font-size-base);
     font-weight: 600;
     text-align: center;
     text-decoration: none;
@@ -216,8 +219,9 @@
     transition: all var(--cc-duration-fast) ease;
     background: transparent;
     white-space: nowrap;
-    min-height: 44px; /* Accessibility: minimum touch target */
+    min-height: 48px; /* Accessibility: minimum touch target */
     letter-spacing: 0.025em;
+    min-width: 120px;
 }
 
 .cc-btn:focus {
@@ -245,8 +249,8 @@
 }
 
 .cc-btn-decline:hover {
-    background: var(--cc-text-secondary);
-    color: white;
+    background: var(--cc-border-color);
+    color: var(--cc-text-primary);
     border-color: var(--cc-text-secondary);
 }
 

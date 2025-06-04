@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
     privacyPolicyUrl: '/privacy-policy',
     cookiePolicyUrl: '/cookie-policy',
     content: {
-      header: 'We use cookies',
-      message: 'This website uses cookies to enhance your browsing experience and provide personalized content. By clicking "Accept All", you consent to our use of cookies.'
+      header: 'We Rely on Cookies',
+      message: 'At GreenAds Global, we use cookies and similar tools to understand how you use our website. This helps us improve your experience, personalize our services, and fine-tune our marketing efforts. By clicking “Accept,” you agree to our use of cookies as outlined in our Privacy Statement. You can read more information about our'
     }
   });
 });
@@ -251,8 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Content customization
     content: {
-      header: 'We use cookies',
-      message: 'This website uses cookies to enhance your browsing experience and provide personalized content. By clicking "Accept All", you consent to our use of cookies.',
+      header: 'We Rely on Cookies',
+      message: 'At GreenAds Global, we use cookies and similar tools to understand how you use our website. This helps us improve your experience, personalize our services, and fine-tune our marketing efforts. By clicking “Accept,” you agree to our use of cookies as outlined in our Privacy Statement. You can read more information about our',
       acceptButton: 'Accept All',
       declineButton: 'Decline All',
       settingsButton: 'Cookie Settings'

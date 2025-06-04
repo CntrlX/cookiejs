@@ -139,7 +139,7 @@ new CookieConsent({
   
   // Custom Content
   content: {
-    header: 'We use cookies',
+    header: 'We Rely on Cookies',
     message: 'This website uses cookies to enhance your experience.',
     acceptButton: 'Accept All',
     declineButton: 'Decline All',
@@ -273,7 +273,7 @@ onChange: function(categories) {
 ### Dynamic Content from Webflow CMS
 ```javascript
 // Get content from Webflow CMS fields
-const headerText = document.querySelector('[data-cookie-header]')?.textContent || 'We use cookies';
+const headerText = document.querySelector('[data-cookie-header]')?.textContent || 'We Rely on Cookies';
 const messageText = document.querySelector('[data-cookie-message]')?.textContent || 'Default message';
 
 new CookieConsent({
