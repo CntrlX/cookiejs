@@ -1,0 +1,36 @@
+{
+  "name": "webflow-cookie-consent",
+  "version": "1.0.0",
+  "description": "GDPR-compliant cookie consent solution for Webflow websites",
+  "main": "src/js/cookieConsent.js",
+  "scripts": {
+    "build": "npm run minify-js && npm run minify-css",
+    "minify-js": "terser src/js/cookieConsent.js -o dist/cookieConsent.min.js -c -m",
+    "minify-css": "cleancss -o dist/cookieConsent.min.css src/css/cookieConsent.css",
+    "dev": "npm run build && npm run serve",
+    "serve": "http-server examples -p 8080"
+  },
+  "keywords": [
+    "cookie",
+    "consent",
+    "gdpr",
+    "webflow",
+    "privacy",
+    "compliance"
+  ],
+  "author": "Cookie Consent Solution",
+  "license": "MIT",
+  "devDependencies": {
+    "terser": "^5.19.0",
+    "clean-css-cli": "^5.6.2",
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/webflow-cookie-consent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-repo/webflow-cookie-consent/issues"
+  },
+  "homepage": "https://github.com/your-repo/webflow-cookie-consent#readme"
+} 

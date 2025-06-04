@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Consent - Basic Example</title>
+    
+    <!-- Cookie Consent CSS -->
+    <link rel="stylesheet" href="../../src/css/cookieConsent.css">
+    
+    <!-- Google Consent Mode v2 - Initialize before any tracking -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Set default consent states (denied by default for GDPR compliance)
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted'
+        });
+        
+        // Configure ads data redaction
+        gtag('set', 'ads_data_redaction', true);
+    </script>
+    
+    <!-- Demo styles -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+        
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f3f4f6;
+            border-radius: 8px;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .demo-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        
+        .demo-btn:hover {
+            background: #2563eb;
+        }
+        
+        .demo-btn.secondary {
+            background: #6b7280;
+        }
+        
+        .demo-btn.secondary:hover {
+            background: #4b5563;
+        }
+        
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 6px;
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+        }
+        
+        pre {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .feature-list li:before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍪 Cookie Consent - Basic Example</h1>
+        
+        <p>This is a basic implementation of the GDPR-compliant cookie consent solution. The banner should appear automatically when you first visit this page (unless you've already given consent).</p>
+        
+        <div class="demo-section">
+            <h3>Key Features Demonstrated:</h3>
+            <ul class="feature-list">
+                <li>GDPR-compliant cookie consent banner</li>
+                <li>Google Consent Mode v2 integration</li>
+                <li>Granular consent categories</li>
+                <li>Local storage for user preferences</li>
+                <li>Responsive design (mobile-friendly)</li>
+                <li>Accessibility features (keyboard navigation)</li>
+            </ul>
+        </div>
+        
+        <div class="demo-section">
+            <h3>Demo Controls:</h3>
+            <div class="demo-buttons">
+                <button class="demo-btn" onclick="showConsentBanner()">Show Cookie Banner</button>
+                <button class="demo-btn secondary" onclick="resetConsent()">Reset Consent</button>
+                <button class="demo-btn secondary" onclick="checkConsentStatus()">Check Status</button>
+                <button class="demo-btn secondary" onclick="showConsentDetails()">Show Details</button>
+            </div>
+            <div id="status" class="status" style="display: none;"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>Implementation Code:</h3>
+            <p>Here's the minimal code needed to integrate this into your Webflow project:</p>
+            
+            <h4>1. Add to Webflow Head Code:</h4>
+            <pre><code>&lt;!-- Cookie Consent CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-repo/webflow-cookie-consent@latest/dist/cookieConsent.min.css"&gt;
+
+&lt;!-- Google Consent Mode v2 --&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'denied',
+    'personalization_storage': 'denied',
+    'security_storage': 'granted'
+  });
+&lt;/script&gt;</code></pre>
+            
+            <h4>2. Add to Webflow Footer Code:</h4>
+            <pre><code>&lt;!-- Cookie Consent Library --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/your-repo/webflow-cookie-consent@latest/dist/cookieConsent.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Initialize Cookie Consent --&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+  new CookieConsent({
+    privacyPolicyUrl: '/privacy-policy',
+    cookiePolicyUrl: '/cookie-policy',
+    content: {
+      header: 'We use cookies',
+      message: 'This website uses cookies to enhance your browsing experience and provide personalized content.'
+    }
+  });
+});
+&lt;/script&gt;</code></pre>
+        </div>
+        
+        <div class="demo-section">
+            <h3>Consent Categories:</h3>
+            <p>This solution provides granular control over different types of cookies:</p>
+            <ul>
+                <li><strong>Strictly Necessary:</strong> Essential for website functionality (always enabled)</li>
+                <li><strong>Analytics:</strong> Help understand website usage and performance</li>
+                <li><strong>Marketing:</strong> Used for advertising and remarketing campaigns</li>
+                <li><strong>Personalization:</strong> Enable customized content and experiences</li>
+            </ul>
+        </div>
+        
+        <div class="demo-section">
+            <h3>GDPR Compliance Features:</h3>
+            <ul>
+                <li>✅ Clear, plain language explanations</li>
+                <li>✅ Granular consent per category</li>
+                <li>✅ Easy withdrawal of consent</li>
+                <li>✅ No pre-checked boxes for non-essential cookies</li>
+                <li>✅ Option to decline all non-essential cookies</li>
+                <li>✅ Consent records with timestamps</li>
+                <li>✅ Links to privacy and cookie policies</li>
+            </ul>
+        </div>
+        
+        <div class="demo-section">
+            <h3>Try the Features:</h3>
+            <p>Test the cookie consent functionality:</p>
+            <ol>
+                <li>Click "Show Cookie Banner" to see the consent banner</li>
+                <li>Try accepting, declining, or customizing your preferences</li>
+                <li>Use "Reset Consent" to clear your preferences and see the banner again</li>
+                <li>Check the browser console for consent events and Google Consent Mode updates</li>
+                <li>Test on mobile devices to see the responsive design</li>
+            </ol>
+        </div>
+        
+        <p><strong>Note:</strong> This is a demonstration. In a real implementation, you would replace the placeholder URLs with your actual privacy policy and cookie policy pages, and configure your Google Tag Manager container ID.</p>
+    </div>
+
+    <!-- Cookie Consent Library -->
+    <script src="../../src/js/cookieConsent.js"></script>
+    
+    <!-- Initialize Cookie Consent -->
+    <script>
+        let cookieConsentInstance;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cookie consent with basic configuration
+            cookieConsentInstance = new CookieConsent({
+                // Basic settings
+                position: 'bottom',
+                theme: 'light',
+                language: 'en',
+                
+                // GDPR compliance settings
+                strictMode: true,
+                showDeclineButton: true,
+                blockCookiesBeforeConsent: true,
+                recordConsent: true,
+                
+                // Google Consent Mode v2
+                googleConsentMode: true,
+                
+                // Content
+                content: {
+                    header: 'We use cookies',
+                    message: 'This website uses cookies to enhance your browsing experience and provide personalized content. By clicking "Accept All", you consent to our use of cookies.',
+                    acceptButton: 'Accept All',
+                    declineButton: 'Decline All',
+                    settingsButton: 'Cookie Settings'
+                },
+                
+                // Policy links (replace with your actual URLs)
+                privacyPolicyUrl: 'https://example.com/privacy-policy',
+                cookiePolicyUrl: 'https://example.com/cookie-policy',
+                
+                // Callbacks for demo purposes
+                onAccept: function(categories) {
+                    console.log('✅ Cookies accepted:', categories);
+                    updateConsentStatus('Cookies accepted', categories);
+                    
+                    // Update Google Consent Mode
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'cookie_consent_accept', {
+                            'categories': Object.keys(categories).filter(key => categories[key])
+                        });
+                    }
+                },
+                
+                onDecline: function(categories) {
+                    console.log('❌ Cookies declined:', categories);
+                    updateConsentStatus('Cookies declined', categories);
+                    
+                    // Update Google Consent Mode
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'cookie_consent_decline');
+                    }
+                },
+                
+                onSave: function(categories) {
+                    console.log('💾 Cookie preferences saved:', categories);
+                    updateConsentStatus('Preferences saved', categories);
+                },
+                
+                onChange: function(categories) {
+                    console.log('🔄 Cookie preferences changed:', categories);
+                    
+                    // Update Google Consent Mode based on user preferences
+                    if (typeof gtag !== 'undefined') {
+                        gtag('consent', 'update', {
+                            'analytics_storage': categories.analytics ? 'granted' : 'denied',
+                            'ad_storage': categories.marketing ? 'granted' : 'denied',
+                            'functionality_storage': categories.necessary ? 'granted' : 'denied',
+                            'personalization_storage': categories.personalization ? 'granted' : 'denied'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Demo functions
+        function showConsentBanner() {
+            if (cookieConsentInstance) {
+                cookieConsentInstance.show();
+            }
+        }
+        
+        function resetConsent() {
+            if (cookieConsentInstance) {
+                cookieConsentInstance.reset();
+                updateConsentStatus('Consent reset - banner will show again', null);
+            }
+        }
+        
+        function checkConsentStatus() {
+            if (cookieConsentInstance) {
+                const consent = cookieConsentInstance.getConsent();
+                if (consent) {
+                    updateConsentStatus('Current consent status', consent.categories);
+                } else {
+                    updateConsentStatus('No consent given yet', null);
+                }
+            }
+        }
+        
+        function showConsentDetails() {
+            if (cookieConsentInstance) {
+                const consent = cookieConsentInstance.getConsent();
+                if (consent) {
+                    const details = `
+                        Version: ${consent.version}
+                        Timestamp: ${new Date(consent.timestamp).toLocaleString()}
+                        Action: ${consent.action}
+                        Language: ${consent.language}
+                        Categories: ${JSON.stringify(consent.categories, null, 2)}
+                    `;
+                    updateConsentStatus('Detailed consent information', details, true);
+                } else {
+                    updateConsentStatus('No consent data available', null);
+                }
+            }
+        }
+        
+        function updateConsentStatus(message, data, isDetailed = false) {
+            const statusElement = document.getElementById('status');
+            statusElement.style.display = 'block';
+            
+            if (isDetailed) {
+                statusElement.innerHTML = `<strong>${message}:</strong><pre style="margin: 10px 0; font-size: 12px;">${data}</pre>`;
+            } else if (data) {
+                const categoriesList = Object.entries(data)
+                    .map(([key, value]) => `${key}: ${value ? '✅' : '❌'}`)
+                    .join(', ');
+                statusElement.innerHTML = `<strong>${message}:</strong><br>${categoriesList}`;
+            } else {
+                statusElement.innerHTML = `<strong>${message}</strong>`;
+            }
+        }
+        
+        // Listen for consent events
+        document.addEventListener('cookieConsentChange', function(event) {
+            console.log('🔔 Consent change event:', event.detail);
+        });
+        
+        document.addEventListener('cookieConsentShow', function(event) {
+            console.log('👁️ Banner shown');
+        });
+        
+        document.addEventListener('cookieConsentHide', function(event) {
+            console.log('🙈 Banner hidden');
+        });
+    </script>
+</body>
+</html> 

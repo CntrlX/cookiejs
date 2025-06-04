@@ -1,0 +1,697 @@
+/**
+ * Webflow Cookie Consent - CSS Styles
+ * Version: 1.0.0
+ * 
+ * Features:
+ * - Modern, responsive design
+ * - Multiple themes (light/dark)
+ * - Smooth animations
+ * - Mobile-first approach
+ * - Accessibility features
+ * - Webflow compatibility
+ */
+
+/* CSS Custom Properties for easy theming */
+:root {
+    --cc-primary-color: #2563eb;
+    --cc-primary-hover: #1d4ed8;
+    --cc-secondary-color: #6b7280;
+    --cc-success-color: #10b981;
+    --cc-danger-color: #ef4444;
+    
+    /* Light theme colors */
+    --cc-bg-banner: #ffffff;
+    --cc-bg-modal: #ffffff;
+    --cc-bg-overlay: rgba(0, 0, 0, 0.5);
+    --cc-text-primary: #1f2937;
+    --cc-text-secondary: #6b7280;
+    --cc-border-color: #e5e7eb;
+    --cc-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    
+    /* Dark theme colors */
+    --cc-dark-bg-banner: #1f2937;
+    --cc-dark-bg-modal: #111827;
+    --cc-dark-bg-overlay: rgba(0, 0, 0, 0.8);
+    --cc-dark-text-primary: #f9fafb;
+    --cc-dark-text-secondary: #d1d5db;
+    --cc-dark-border-color: #374151;
+    --cc-dark-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    
+    /* Spacing and sizing */
+    --cc-padding: 1.5rem;
+    --cc-gap: 1rem;
+    --cc-border-radius: 0.5rem;
+    --cc-font-size-sm: 0.875rem;
+    --cc-font-size-base: 1rem;
+    --cc-font-size-lg: 1.125rem;
+    --cc-font-size-xl: 1.25rem;
+    
+    /* Z-index values */
+    --cc-z-banner: 9999;
+    --cc-z-modal: 10000;
+    
+    /* Animation durations */
+    --cc-duration-fast: 0.15s;
+    --cc-duration-normal: 0.3s;
+    --cc-duration-slow: 0.5s;
+}
+
+/* Reset and base styles */
+.cc-banner *,
+.cc-modal * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner styles */
+.cc-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: var(--cc-z-banner);
+    background: var(--cc-bg-banner);
+    border: 1px solid var(--cc-border-color);
+    box-shadow: var(--cc-shadow);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: var(--cc-font-size-base);
+    line-height: 1.5;
+    color: var(--cc-text-primary);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all var(--cc-duration-normal) ease-in-out;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.cc-banner.cc-bottom {
+    bottom: 0;
+    border-top-left-radius: var(--cc-border-radius);
+    border-top-right-radius: var(--cc-border-radius);
+    border-bottom: none;
+}
+
+.cc-banner.cc-top {
+    top: 0;
+    border-bottom-left-radius: var(--cc-border-radius);
+    border-bottom-right-radius: var(--cc-border-radius);
+    border-top: none;
+    transform: translateY(-100%);
+}
+
+.cc-banner.cc-show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cc-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cc-gap);
+    padding: var(--cc-padding);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .cc-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* Banner content */
+.cc-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.cc-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cc-icon {
+    font-size: var(--cc-font-size-xl);
+    line-height: 1;
+}
+
+.cc-title {
+    font-size: var(--cc-font-size-lg);
+    font-weight: 600;
+    color: var(--cc-text-primary);
+    margin: 0;
+}
+
+.cc-message {
+    color: var(--cc-text-secondary);
+    margin: 0.5rem 0;
+    font-size: var(--cc-font-size-sm);
+}
+
+.cc-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.cc-link {
+    color: var(--cc-primary-color);
+    text-decoration: underline;
+    font-size: var(--cc-font-size-sm);
+    transition: color var(--cc-duration-fast) ease;
+}
+
+.cc-link:hover {
+    color: var(--cc-primary-hover);
+    text-decoration: none;
+}
+
+/* Banner actions */
+.cc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .cc-actions {
+        justify-content: stretch;
+    }
+    
+    .cc-actions .cc-btn {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+/* Button styles */
+.cc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--cc-border-radius);
+    font-size: var(--cc-font-size-sm);
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--cc-duration-fast) ease;
+    background: transparent;
+    white-space: nowrap;
+    min-height: 44px; /* Accessibility: minimum touch target */
+}
+
+.cc-btn:focus {
+    outline: 2px solid var(--cc-primary-color);
+    outline-offset: 2px;
+}
+
+.cc-btn-accept {
+    background: var(--cc-primary-color);
+    color: white;
+    border-color: var(--cc-primary-color);
+}
+
+.cc-btn-accept:hover {
+    background: var(--cc-primary-hover);
+    border-color: var(--cc-primary-hover);
+}
+
+.cc-btn-decline {
+    background: transparent;
+    color: var(--cc-secondary-color);
+    border-color: var(--cc-border-color);
+}
+
+.cc-btn-decline:hover {
+    background: var(--cc-danger-color);
+    color: white;
+    border-color: var(--cc-danger-color);
+}
+
+.cc-btn-settings {
+    background: transparent;
+    color: var(--cc-primary-color);
+    border-color: var(--cc-primary-color);
+}
+
+.cc-btn-settings:hover {
+    background: var(--cc-primary-color);
+    color: white;
+}
+
+.cc-btn-save {
+    background: var(--cc-success-color);
+    color: white;
+    border-color: var(--cc-success-color);
+}
+
+.cc-btn-save:hover {
+    background: #059669;
+    border-color: #059669;
+}
+
+/* Modal styles */
+.cc-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--cc-z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--cc-duration-normal) ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.cc-modal.cc-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cc-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--cc-bg-overlay);
+    cursor: pointer;
+}
+
+.cc-modal-content {
+    position: relative;
+    background: var(--cc-bg-modal);
+    border-radius: var(--cc-border-radius);
+    box-shadow: var(--cc-shadow);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.9) translateY(20px);
+    transition: transform var(--cc-duration-normal) ease;
+}
+
+.cc-modal.cc-show .cc-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.cc-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--cc-padding);
+    border-bottom: 1px solid var(--cc-border-color);
+    flex-shrink: 0;
+}
+
+.cc-modal-header h2 {
+    margin: 0;
+    font-size: var(--cc-font-size-xl);
+    font-weight: 600;
+    color: var(--cc-text-primary);
+}
+
+.cc-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--cc-text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--cc-border-radius);
+    transition: all var(--cc-duration-fast) ease;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cc-close:hover {
+    background: var(--cc-border-color);
+    color: var(--cc-text-primary);
+}
+
+.cc-modal-body {
+    padding: var(--cc-padding);
+    overflow-y: auto;
+    flex: 1;
+}
+
+.cc-modal-description {
+    color: var(--cc-text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: var(--cc-font-size-sm);
+}
+
+/* Category styles */
+.cc-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cc-category {
+    border: 1px solid var(--cc-border-color);
+    border-radius: var(--cc-border-radius);
+    padding: 1rem;
+    transition: border-color var(--cc-duration-fast) ease;
+}
+
+.cc-category:hover {
+    border-color: var(--cc-primary-color);
+}
+
+.cc-category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.cc-category-header h4 {
+    margin: 0;
+    font-size: var(--cc-font-size-base);
+    font-weight: 600;
+    color: var(--cc-text-primary);
+}
+
+.cc-category-description {
+    color: var(--cc-text-secondary);
+    font-size: var(--cc-font-size-sm);
+    margin: 0;
+    margin-left: 2.5rem;
+}
+
+/* Toggle switch styles */
+.cc-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.cc-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.cc-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: var(--cc-duration-fast);
+    border-radius: 24px;
+}
+
+.cc-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: var(--cc-duration-fast);
+    border-radius: 50%;
+}
+
+input:checked + .cc-slider {
+    background-color: var(--cc-primary-color);
+}
+
+input:focus + .cc-slider {
+    box-shadow: 0 0 0 2px var(--cc-primary-color);
+}
+
+input:checked + .cc-slider:before {
+    transform: translateX(20px);
+}
+
+input:disabled + .cc-slider {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cc-modal-footer {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    padding: var(--cc-padding);
+    border-top: 1px solid var(--cc-border-color);
+    flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .cc-modal-footer {
+        flex-direction: column;
+    }
+    
+    .cc-modal-footer .cc-btn {
+        width: 100%;
+    }
+}
+
+/* Dark theme */
+.cc-banner.cc-dark {
+    background: var(--cc-dark-bg-banner);
+    border-color: var(--cc-dark-border-color);
+    color: var(--cc-dark-text-primary);
+    box-shadow: var(--cc-dark-shadow);
+}
+
+.cc-dark .cc-title {
+    color: var(--cc-dark-text-primary);
+}
+
+.cc-dark .cc-message {
+    color: var(--cc-dark-text-secondary);
+}
+
+.cc-dark .cc-btn-decline {
+    color: var(--cc-dark-text-secondary);
+    border-color: var(--cc-dark-border-color);
+}
+
+.cc-dark .cc-btn-decline:hover {
+    background: var(--cc-danger-color);
+    color: white;
+    border-color: var(--cc-danger-color);
+}
+
+.cc-modal.cc-dark {
+    color: var(--cc-dark-text-primary);
+}
+
+.cc-modal.cc-dark .cc-modal-backdrop {
+    background: var(--cc-dark-bg-overlay);
+}
+
+.cc-modal.cc-dark .cc-modal-content {
+    background: var(--cc-dark-bg-modal);
+    box-shadow: var(--cc-dark-shadow);
+}
+
+.cc-modal.cc-dark .cc-modal-header {
+    border-bottom-color: var(--cc-dark-border-color);
+}
+
+.cc-modal.cc-dark .cc-modal-header h2 {
+    color: var(--cc-dark-text-primary);
+}
+
+.cc-modal.cc-dark .cc-close {
+    color: var(--cc-dark-text-secondary);
+}
+
+.cc-modal.cc-dark .cc-close:hover {
+    background: var(--cc-dark-border-color);
+    color: var(--cc-dark-text-primary);
+}
+
+.cc-modal.cc-dark .cc-modal-description {
+    color: var(--cc-dark-text-secondary);
+}
+
+.cc-modal.cc-dark .cc-category {
+    border-color: var(--cc-dark-border-color);
+}
+
+.cc-modal.cc-dark .cc-category:hover {
+    border-color: var(--cc-primary-color);
+}
+
+.cc-modal.cc-dark .cc-category-header h4 {
+    color: var(--cc-dark-text-primary);
+}
+
+.cc-modal.cc-dark .cc-category-description {
+    color: var(--cc-dark-text-secondary);
+}
+
+.cc-modal.cc-dark .cc-modal-footer {
+    border-top-color: var(--cc-dark-border-color);
+}
+
+/* Accessibility improvements */
+.cc-banner:focus-within,
+.cc-modal:focus-within {
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-banner,
+    .cc-modal,
+    .cc-modal-content,
+    .cc-btn,
+    .cc-link,
+    .cc-slider {
+        transition: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .cc-banner,
+    .cc-modal-content {
+        border: 2px solid;
+    }
+    
+    .cc-btn {
+        border-width: 2px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .cc-banner,
+    .cc-modal {
+        display: none !important;
+    }
+}
+
+/* Body scroll lock when modal is open */
+body.cc-modal-open {
+    overflow: hidden;
+    padding-right: 0; /* Prevent layout shift */
+}
+
+/* Animation keyframes */
+@keyframes ccSlideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ccSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ccFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation classes */
+.cc-banner.cc-animation-slide.cc-bottom.cc-show {
+    animation: ccSlideUp var(--cc-duration-normal) ease-out;
+}
+
+.cc-banner.cc-animation-slide.cc-top.cc-show {
+    animation: ccSlideDown var(--cc-duration-normal) ease-out;
+}
+
+.cc-modal.cc-animation-fade.cc-show .cc-modal-content {
+    animation: ccFadeIn var(--cc-duration-normal) ease-out;
+}
+
+/* Custom scrollbar for modal */
+.cc-modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cc-modal-body::-webkit-scrollbar-track {
+    background: var(--cc-border-color);
+    border-radius: 3px;
+}
+
+.cc-modal-body::-webkit-scrollbar-thumb {
+    background: var(--cc-secondary-color);
+    border-radius: 3px;
+}
+
+.cc-modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--cc-text-secondary);
+}
+
+/* Dark theme scrollbar */
+.cc-modal.cc-dark .cc-modal-body::-webkit-scrollbar-track {
+    background: var(--cc-dark-border-color);
+}
+
+.cc-modal.cc-dark .cc-modal-body::-webkit-scrollbar-thumb {
+    background: var(--cc-dark-text-secondary);
+}
+
+/* Responsive typography */
+@media (max-width: 480px) {
+    :root {
+        --cc-padding: 1rem;
+        --cc-font-size-sm: 0.8125rem;
+        --cc-font-size-base: 0.9375rem;
+        --cc-font-size-lg: 1rem;
+        --cc-font-size-xl: 1.125rem;
+    }
+    
+    .cc-container {
+        padding: var(--cc-padding);
+    }
+    
+    .cc-btn {
+        padding: 0.625rem 1.25rem;
+        font-size: var(--cc-font-size-sm);
+    }
+} 

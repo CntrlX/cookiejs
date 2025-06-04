@@ -1,0 +1,47 @@
+MIT License
+
+Copyright (c) 2024 Webflow Cookie Consent
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+GDPR COMPLIANCE DISCLAIMER:
+
+This software provides technical tools to implement cookie consent functionality.
+However, legal compliance with GDPR, CCPA, and other privacy regulations depends
+on many factors including:
+
+- Your specific use case and data processing activities
+- The accuracy and completeness of your privacy policy
+- Your cookie categorization and descriptions
+- Your data handling and storage practices
+- Your legal jurisdiction and applicable laws
+
+The use of this software does not guarantee legal compliance with any privacy
+regulations. It is your responsibility to:
+
+1. Consult with qualified legal professionals
+2. Conduct proper privacy impact assessments
+3. Implement appropriate data protection measures
+4. Maintain accurate privacy documentation
+5. Regularly review and update your privacy practices
+
+The authors and contributors of this software disclaim any liability for legal
+non-compliance or privacy violations arising from the use of this software. 
